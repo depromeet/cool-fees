@@ -1,4 +1,4 @@
-package com.depromeet.tmj.cool_fees.common
+package com.depromeet.tmj.cool_fees.common.base
 
 import androidx.appcompat.app.AppCompatActivity
 import io.reactivex.disposables.CompositeDisposable
