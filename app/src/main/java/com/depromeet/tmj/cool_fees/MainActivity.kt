@@ -14,6 +14,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun getCallingIntent(context: Context): Intent = Intent(context, this::class.java)
+        fun getCallingIntent(context: Context): Intent {
+            return Intent(context, MainActivity::class.java)
+        }
     }
 }

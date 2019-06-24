@@ -1,8 +1,9 @@
-package com.depromeet.tmj.cool_fees
+package com.depromeet.tmj.cool_fees.features.setting
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import com.depromeet.tmj.cool_fees.R
 import com.depromeet.tmj.cool_fees.common.base.BaseActivity
 
 class SettingActivity : BaseActivity() {
@@ -13,6 +14,8 @@ class SettingActivity : BaseActivity() {
     }
 
     companion object {
-        fun getCallingIntent(context: Context): Intent = Intent(context, this::class.java)
+        fun getCallingIntent(context: Context): Intent {
+            return Intent(context, SettingActivity::class.java)
+        }
     }
 }
