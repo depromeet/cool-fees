@@ -23,17 +23,10 @@ class SplashActivity : BaseActivity() {
         return AppPreferenceDataStore().isFirstLaunch()
     }
 
-    private fun setFirstLaunchDisable() {
-        AppPreferenceDataStore().putFirstLaunch(false)
-    }
-
     private fun goToSettingActivity() {
         compositeDisposable.add(Observable.just(0)
                 .delay(2, TimeUnit.SECONDS)
-                .subscribe {
-                    startActivity(SettingActivity.getCallingIntent(this))
-                    setFirstLaunchDisable()
-                })
+                .subscribe { startActivity(SettingActivity.getCallingIntent(this)) })
     }
 
     private fun goToMainActivity() {
