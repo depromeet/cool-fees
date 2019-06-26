@@ -5,6 +5,6 @@
     <string name="wall_type">벽걸이형</string>
     <string name="stand_type">스탠드형</string>
     <string name="confirm">확인</string>
-    <string name="question">\? </string>
+    <string name="question">\?\u00A0</string>
     <string name="info_desc"><u>에너지소비효율등급</u></string>
 </resources>

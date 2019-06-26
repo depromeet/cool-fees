@@ -101,6 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
+        android:fontFamily="@font/notosanscjkkr_medium"
         android:text="소비전력"
         android:textColor="@color/black_text"
         android:textSize="16sp"
@@ -112,6 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="6dp"
+        android:fontFamily="@font/notosanscjkkr_medium"
         android:text="W"
         android:textColor="@color/black_text"
         android:textSize="16sp"
@@ -123,6 +125,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="9dp"
+        android:fontFamily="@font/sfuitext_bold"
         android:text="1200"
         android:textColor="#2d1cdb"
         android:textSize="24sp"
@@ -146,13 +149,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
+        android:fontFamily="@font/notosanscjkkr_medium"
         android:text="@string/info_desc"
         android:textColor="#808080"
         android:textSize="14sp"
-        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintBottom_toTopOf="@id/tv_info_desc"
         app:layout_constraintStart_toEndOf="@id/tv_question"
         app:layout_constraintTop_toTopOf="@id/tv_question"
-        app:layout_constraintBottom_toTopOf="@id/tv_info_desc"/>
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/tv_info_desc"
@@ -163,9 +167,9 @@
         android:text="우리집 에어컨의 소비전력 확인하는 법"
         android:textColor="#979797"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_question"
         app:layout_constraintStart_toStartOf="@id/tv_info_title"
-        app:layout_constraintTop_toBottomOf="@id/tv_info_title"
-        app:layout_constraintBottom_toBottomOf="@id/tv_question"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_info_title" />
 
     <Button
         android:id="@+id/btn_confirm"
@@ -173,6 +177,7 @@
         android:layout_height="70dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/shape_oval_orange"
+        android:fontFamily="@font/notosanscjkkr_medium"
         android:text="@string/confirm"
         android:textColor="@color/white"
         android:textSize="16sp"
