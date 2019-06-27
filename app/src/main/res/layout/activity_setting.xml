@@ -126,7 +126,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="9dp"
         android:fontFamily="@font/sfuitext_bold"
-        android:text="1200"
+        android:text="600"
         android:textColor="#2d1cdb"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@id/view_underline"

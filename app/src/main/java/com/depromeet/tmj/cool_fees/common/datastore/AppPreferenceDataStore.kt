@@ -8,7 +8,7 @@ class AppPreferenceDataStore: SharedPreferencesDataStore(CoolFeesApplication.get
         this.putString(KEY_AIR_CONDITIONAL_TYPE, value)
     }
 
-    fun getAireType(): String {
+    fun getAirType(): String {
         return this.getString(KEY_AIR_CONDITIONAL_TYPE, "")
     }
 

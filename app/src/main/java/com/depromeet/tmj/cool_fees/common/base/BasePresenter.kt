@@ -1,4 +1,6 @@
 package com.depromeet.tmj.cool_fees.common.base
 
-open class BasePresenter {
+import androidx.lifecycle.LifecycleObserver
+
+open class BasePresenter: LifecycleObserver {
 }
