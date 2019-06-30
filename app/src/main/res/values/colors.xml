@@ -7,4 +7,6 @@
     <color name="orange">#ffb82f</color>
     <color name="white">#ffffff</color>
     <color name="statusBar">#e0e0e0</color>
+    <color name="bg_blue">#1f8ef4</color>
+    <color name="blue_text">#8bc7ff</color>
 </resources>

@@ -26,12 +26,18 @@ class SplashActivity : BaseActivity() {
     private fun goToSettingActivity() {
         compositeDisposable.add(Observable.just(0)
                 .delay(2, TimeUnit.SECONDS)
-                .subscribe { startActivity(SettingActivity.getCallingIntent(this)) })
+                .subscribe {
+                    startActivity(SettingActivity.getCallingIntent(this))
+                    finish()
+                })
     }
 
     private fun goToMainActivity() {
         compositeDisposable.add(Observable.just(0)
                 .delay(2, TimeUnit.SECONDS)
-                .subscribe { startActivity(MainActivity.getCallingIntent(this)) })
+                .subscribe {
+                    startActivity(MainActivity.getCallingIntent(this))
+                    finish()
+                })
     }
 }
