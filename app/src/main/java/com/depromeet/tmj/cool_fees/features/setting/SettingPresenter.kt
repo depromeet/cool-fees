@@ -14,11 +14,13 @@ class SettingPresenter(private val view: SettingView) : BasePresenter() {
             TYPE_STAND -> view.checkStandType()
             else -> view.checkWallType()
         }
+        view.setWatt(AppPreferenceDataStore().getWatt())
     }
 
-    fun onClickConfirm(type: String) {
+    fun onClickConfirm(type: String, watt: Int) {
         setAirType(type)
         setFirstLaunchDisable()
+        setWatt(watt)
         view.finish()
     }
 
@@ -28,6 +30,10 @@ class SettingPresenter(private val view: SettingView) : BasePresenter() {
 
     private fun setFirstLaunchDisable() {
         AppPreferenceDataStore().putFirstLaunch(false)
+    }
+
+    private fun setWatt(watt: Int) {
+        AppPreferenceDataStore().putWatt(watt)
     }
 
     companion object {

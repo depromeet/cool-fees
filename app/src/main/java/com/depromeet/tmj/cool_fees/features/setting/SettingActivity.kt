@@ -23,11 +23,17 @@ class SettingActivity : BaseActivity(), SettingView {
     }
 
     override fun checkWallType() {
-        tb_wall_type.performClick()
+        tb_wall_type.isChecked = true
+        tb_stand_type.isChecked = false
     }
 
     override fun checkStandType() {
-        tb_stand_type.performClick()
+        tb_wall_type.isChecked = false
+        tb_stand_type.isChecked = true
+    }
+
+    override fun setWatt(watt: Int) {
+        et_watt.setText(watt.toString())
     }
 
     private fun bindPresenter() {
@@ -55,11 +61,13 @@ class SettingActivity : BaseActivity(), SettingView {
                     if (tb_wall_type.isChecked) SettingPresenter.TYPE_WALL
                     else SettingPresenter.TYPE_STAND
                 }
-                .subscribe(presenter::onClickConfirm))
+                .subscribe { type ->
+                    presenter.onClickConfirm(type, et_watt.text.toString().toInt())
+                })
 
         compositeDisposable.add(et_watt.textChanges()
-                .subscribe {watt ->
-                    if(watt.isNotEmpty()) {
+                .subscribe { watt ->
+                    if (watt.isNotEmpty()) {
                         if (watt.toString().toInt() > 5000) {
                             tv_warning.visibility = View.VISIBLE
                             btn_confirm.isEnabled = false
