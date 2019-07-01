@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ToggleButton
 import com.depromeet.tmj.cool_fees.R
 import com.depromeet.tmj.cool_fees.common.base.BaseActivity
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.jakewharton.rxbinding3.view.clicks
 import com.jakewharton.rxbinding3.widget.textChanges
 import kotlinx.android.synthetic.main.activity_setting.*
@@ -77,6 +78,14 @@ class SettingActivity : BaseActivity(), SettingView {
                         }
                     }
                 })
+
+        compositeDisposable.add(cl_info.clicks()
+                .throttleFirst(2000, TimeUnit.MILLISECONDS)
+                .subscribe { showInfoBottomSheet() })
+    }
+
+    private fun showInfoBottomSheet() {
+        InfoBottomSheet.newInstance().show(supportFragmentManager, InfoBottomSheet.TAG)
     }
 
     private fun toggleSelector(toggleButton: ToggleButton) {
