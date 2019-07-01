@@ -15,16 +15,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/bg_wall_type"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="126dp"
         android:fontFamily="@font/notosanscjkkr_bold"
         android:text="여기가 바로\n북극인가요?"
         android:textColor="@color/white"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -165,29 +175,21 @@
         app:layout_constraintStart_toEndOf="@id/et_using_time"
         app:layout_constraintTop_toTopOf="@id/tv_input_using_time" />
 
-
-    <ImageButton
-        android:id="@+id/btn_go_calendar"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/shape_half_oval_yellow"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/tv_go_calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="false"
         android:fontFamily="@font/notosanscjkkr_medium"
         android:text="@string/go_calendar"
         android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/btn_go_calendar"
-        app:layout_constraintEnd_toEndOf="@id/btn_go_calendar"
-        app:layout_constraintStart_toStartOf="@id/btn_go_calendar"
-        app:layout_constraintTop_toTopOf="@id/btn_go_calendar" />
+        android:textSize="27sp"
+        android:drawablePadding="8dp"
+        android:drawableStart="@drawable/image_arrow_down"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

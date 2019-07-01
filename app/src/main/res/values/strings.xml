@@ -7,7 +7,7 @@
     <string name="confirm">확인</string>
     <string name="question">\?\u00A0</string>
     <string name="info_desc">에너지소비효율등급</string>
-    <string name="go_calendar">이번달 에어컨 비용 보기</string>
+    <string name="go_calendar">에어컨 사용시간 입력하기</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="live_fee">에어컨 실시간 비용</string>
     <string name="won">원</string>

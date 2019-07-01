@@ -9,7 +9,7 @@ import com.depromeet.tmj.cool_fees.R
 import com.depromeet.tmj.cool_fees.common.base.BaseFragment
 import com.depromeet.tmj.cool_fees.features.setting.SettingActivity
 import com.jakewharton.rxbinding3.view.clicks
-import kotlinx.android.synthetic.main.fragment_tax.*
+import kotlinx.android.synthetic.main.fragment_main.*
 import java.util.concurrent.TimeUnit
 
 
@@ -17,7 +17,7 @@ class MainFragment : BaseFragment() {
     private lateinit var listener: Listener
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_tax, container, false)
+        return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,7 +38,7 @@ class MainFragment : BaseFragment() {
             .throttleFirst(2000, TimeUnit.MILLISECONDS)
             .subscribe { goToSettingActivity() })
 
-        compositeDisposable.add(btn_go_calendar.clicks()
+        compositeDisposable.add(tv_go_calendar.clicks()
             .throttleFirst(2000, TimeUnit.MILLISECONDS)
             .subscribe { listener.onClickCalendarButton() })
     }
