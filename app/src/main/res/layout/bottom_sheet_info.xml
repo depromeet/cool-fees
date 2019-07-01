@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true">
+
+    <TextView
+        android:id="@+id/tv_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="73dp"
+        android:text="@string/question"
+        android:textColor="#dbdbdb"
+        android:textSize="50sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@id/tv_ready"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_goneMarginBottom="73dp" />
+
+    <TextView
+        android:id="@+id/tv_info_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:fontFamily="@font/notosanscjkkr_medium"
+        android:text="@string/info_desc"
+        android:textColor="#808080"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@id/view_divider"
+        app:layout_constraintStart_toEndOf="@id/tv_question"
+        app:layout_constraintTop_toTopOf="@id/tv_question"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <View
+        android:id="@+id/view_divider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/grey"
+        app:layout_constraintBottom_toBottomOf="@id/tv_info_desc"
+        app:layout_constraintEnd_toEndOf="@id/tv_info_title"
+        app:layout_constraintStart_toStartOf="@id/tv_info_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_info_title" />
+
+    <TextView
+        android:id="@+id/tv_info_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanscjkkr_light"
+        android:text="우리집 에어컨의 소비전력 확인하는 법"
+        android:textColor="#979797"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_question"
+        app:layout_constraintStart_toStartOf="@id/tv_info_title"
+        app:layout_constraintTop_toBottomOf="@id/view_divider" />
+
+    <TextView
+        android:id="@+id/tv_ready"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanscjkkr_bold"
+        android:text="준비중입니다."
+        android:textColor="@color/black_text"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_ready_sub"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_ready_sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:text="(에어컨의 옆면을 확인해주세요.)"
+        android:textColor="@color/black_text"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

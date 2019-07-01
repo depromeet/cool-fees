@@ -2,5 +2,13 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">@color/bg_blue</color>
+    <color name="black_text">#1c1c1c</color>
+    <color name="orange">#ffb82f</color>
+    <color name="white">#ffffff</color>
+    <color name="statusBar">#e0e0e0</color>
+    <color name="bg_blue">#1f8ef4</color>
+    <color name="blue_text">#8bc7ff</color>
+    <color name="grey">#dbdbdb</color>
+    <color name="pink">#ff0088</color>
 </resources>
