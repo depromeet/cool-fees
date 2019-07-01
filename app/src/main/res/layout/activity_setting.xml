@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
     tools:context=".features.setting.SettingActivity">
 
     <androidx.constraintlayout.widget.Guideline
@@ -31,7 +32,7 @@
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="36dp"
         android:fontFamily="@font/notosanscjkkr_bold"
         android:text="@string/setting_title"
         android:textColor="@color/black_text"
@@ -51,11 +52,26 @@
         app:layout_constraintStart_toStartOf="@id/gl_left"
         app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
+    <TextView
+        android:layout_width="67dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="3dp"
+        android:background="@drawable/image_speech_bubble_blue"
+        android:fontFamily="@font/sfuitext_medium"
+        android:paddingStart="13dp"
+        android:paddingTop="3dp"
+        android:text="600W"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/tv_wall_type"
+        app:layout_constraintTop_toTopOf="@id/tv_wall_type" />
+
     <ToggleButton
         android:id="@+id/tb_wall_type"
         android:layout_width="0dp"
         android:layout_height="146dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/selector_wall_type"
         android:textOff=""
         android:textOn=""
         app:layout_constraintEnd_toEndOf="@id/gl_center_vertical"
@@ -75,11 +91,26 @@
         app:layout_constraintStart_toStartOf="@id/gl_center_vertical"
         app:layout_constraintTop_toTopOf="@id/tv_wall_type" />
 
+    <TextView
+        android:layout_width="67dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="3dp"
+        android:background="@drawable/image_speech_bubble_blue"
+        android:fontFamily="@font/sfuitext_medium"
+        android:paddingStart="9dp"
+        android:paddingTop="3dp"
+        android:text="1800W"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/tv_stand_type"
+        app:layout_constraintTop_toTopOf="@id/tv_stand_type" />
+
     <ToggleButton
         android:id="@+id/tb_stand_type"
         android:layout_width="0dp"
         android:layout_height="146dp"
         android:layout_marginStart="4dp"
+        android:background="@drawable/selector_stand_type"
         android:textOff=""
         android:textOn=""
         app:layout_constraintBottom_toBottomOf="@id/tb_wall_type"
@@ -87,56 +118,69 @@
         app:layout_constraintStart_toStartOf="@id/gl_center_vertical"
         app:layout_constraintTop_toTopOf="@id/tb_wall_type" />
 
-
-    <View
-        android:id="@+id/view_underline"
-        android:layout_width="90dp"
-        android:layout_height="2dp"
-        android:layout_marginTop="48dp"
-        android:background="#2d1cdb"
-        app:layout_constraintEnd_toEndOf="@id/gl_right"
-        app:layout_constraintTop_toBottomOf="@id/tb_stand_type" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="6dp"
         android:fontFamily="@font/notosanscjkkr_medium"
         android:text="소비전력"
         android:textColor="@color/black_text"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/view_underline"
-        app:layout_constraintEnd_toStartOf="@id/view_underline" />
+        app:layout_constraintBottom_toBottomOf="@id/et_watt"
+        app:layout_constraintEnd_toStartOf="@id/et_watt" />
 
     <TextView
         android:id="@+id/tv_watt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="6dp"
         android:fontFamily="@font/notosanscjkkr_medium"
         android:text="W"
         android:textColor="@color/black_text"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/view_underline"
-        app:layout_constraintEnd_toEndOf="@id/view_underline" />
+        app:layout_constraintBottom_toBottomOf="@id/et_watt"
+        app:layout_constraintEnd_toEndOf="@id/gl_right" />
+
+    <EditText
+        android:id="@+id/et_watt"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="2dp"
+        android:background="@drawable/shape_rect_grey_border_3r"
+        android:fontFamily="@font/sfuitext_medium"
+        android:inputType="numberDecimal"
+        android:maxLength="4"
+        android:paddingStart="13dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="13dp"
+        android:paddingBottom="5dp"
+        android:text="600"
+        android:textAlignment="center"
+        android:textColor="@color/bg_blue"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@id/tv_watt"
+        app:layout_constraintTop_toBottomOf="@id/tb_wall_type" />
 
     <TextView
-        android:id="@+id/tv_watt_value"
+        android:id="@+id/tv_warning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="9dp"
-        android:fontFamily="@font/sfuitext_bold"
-        android:text="600"
-        android:textColor="#2d1cdb"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@id/view_underline"
-        app:layout_constraintEnd_toStartOf="@id/tv_watt" />
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/notosanscjkkr_light"
+        android:text="@string/warning_watt"
+        android:textAlignment="textEnd"
+        android:textColor="@color/pink"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_watt"
+        app:layout_constraintTop_toBottomOf="@id/et_watt" />
 
     <TextView
         android:id="@+id/tv_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/question"
         android:textColor="#dbdbdb"
         android:textSize="50sp"
@@ -153,30 +197,42 @@
         android:text="@string/info_desc"
         android:textColor="#808080"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/tv_info_desc"
+        app:layout_constraintBottom_toTopOf="@id/view_divider"
         app:layout_constraintStart_toEndOf="@id/tv_question"
         app:layout_constraintTop_toTopOf="@id/tv_question"
         app:layout_constraintVertical_chainStyle="packed" />
+
+    <View
+        android:id="@+id/view_divider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/grey"
+        app:layout_constraintBottom_toBottomOf="@id/tv_info_desc"
+        app:layout_constraintEnd_toEndOf="@id/tv_info_title"
+        app:layout_constraintStart_toStartOf="@id/tv_info_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_info_title" />
 
     <TextView
         android:id="@+id/tv_info_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:fontFamily="@font/notosanscjkkr_light"
         android:text="우리집 에어컨의 소비전력 확인하는 법"
         android:textColor="#979797"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@id/tv_question"
         app:layout_constraintStart_toStartOf="@id/tv_info_title"
-        app:layout_constraintTop_toBottomOf="@id/tv_info_title" />
+        app:layout_constraintTop_toBottomOf="@id/view_divider" />
 
     <Button
         android:id="@+id/btn_confirm"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/shape_oval_orange"
+        android:background="@drawable/selector_oval_orange"
+        android:elevation="15dp"
         android:fontFamily="@font/notosanscjkkr_medium"
         android:text="@string/confirm"
         android:textColor="@color/white"

@@ -3,10 +3,12 @@ package com.depromeet.tmj.cool_fees.features.setting
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ToggleButton
 import com.depromeet.tmj.cool_fees.R
 import com.depromeet.tmj.cool_fees.common.base.BaseActivity
 import com.jakewharton.rxbinding3.view.clicks
+import com.jakewharton.rxbinding3.widget.textChanges
 import kotlinx.android.synthetic.main.activity_setting.*
 import java.util.concurrent.TimeUnit
 
@@ -37,14 +39,14 @@ class SettingActivity : BaseActivity(), SettingView {
         compositeDisposable.add(tb_wall_type.clicks()
                 .subscribe {
                     toggleSelector(tb_wall_type)
-                    tv_watt_value.text = WATT_WALL_TYPE
+                    et_watt.setText(WATT_WALL_TYPE)
                 }
         )
 
         compositeDisposable.add(tb_stand_type.clicks()
                 .subscribe {
                     toggleSelector(tb_stand_type)
-                    tv_watt_value.text = WATT_STAND_TYPE
+                    et_watt.setText(WATT_STAND_TYPE)
                 })
 
         compositeDisposable.add(btn_confirm.clicks()
@@ -54,6 +56,19 @@ class SettingActivity : BaseActivity(), SettingView {
                     else SettingPresenter.TYPE_STAND
                 }
                 .subscribe(presenter::onClickConfirm))
+
+        compositeDisposable.add(et_watt.textChanges()
+                .subscribe {watt ->
+                    if(watt.isNotEmpty()) {
+                        if (watt.toString().toInt() > 5000) {
+                            tv_warning.visibility = View.VISIBLE
+                            btn_confirm.isEnabled = false
+                        } else {
+                            tv_warning.visibility = View.GONE
+                            btn_confirm.isEnabled = true
+                        }
+                    }
+                })
     }
 
     private fun toggleSelector(toggleButton: ToggleButton) {

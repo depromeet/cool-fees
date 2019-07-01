@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/image_stand_type" android:state_checked="false" />
+    <item android:state_checked="true">
+        <layer-list>
+            <item android:drawable="@drawable/image_stand_type" />
+            <item
+                android:width="48dp"
+                android:height="48dp"
+                android:drawable="@drawable/image_toggle_checked"
+                android:gravity="end|top" />
+        </layer-list>
+    </item>
+</selector>
