@@ -61,15 +61,18 @@ class CalendarDayAdapter extends ArrayAdapter<Date> {
 
         Calendar day = new GregorianCalendar();
         day.setTime(getItem(position));
-
-        // Loading an image of the event
-        if (dayText != null) {
-            loadUsingTime(dayText, day);
+        setLabelColors(dayLabel, day);
+        dayLabel.setText(String.valueOf(day.get(Calendar.DAY_OF_MONTH)));
+        if(day.get(Calendar.MONTH) == mPageMonth) {
+            // Loading an image of the event
+            if (dayText != null) {
+                loadUsingTime(dayText, day);
+            }
+        } else {
+            dayLabel.setVisibility(View.INVISIBLE);
+            dayText.setVisibility(View.INVISIBLE);
         }
 
-        setLabelColors(dayLabel, day);
-
-        dayLabel.setText(String.valueOf(day.get(Calendar.DAY_OF_MONTH)));
         return view;
     }
 

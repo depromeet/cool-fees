@@ -133,7 +133,7 @@ public class CalendarPageAdapter extends PagerAdapter {
         Get all days of one page (42 is a number of all possible cells in one page
         (a part of previous month, current month and a part of next month))
          */
-        while (days.size() < 42) {
+        while (days.size() < 36) {
             days.add(calendar.getTime());
             calendar.add(Calendar.DAY_OF_MONTH, 1);
         }
