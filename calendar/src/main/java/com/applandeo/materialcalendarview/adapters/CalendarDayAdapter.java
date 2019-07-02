@@ -56,16 +56,16 @@ class CalendarDayAdapter extends ArrayAdapter<Date> {
             view = mLayoutInflater.inflate(mCalendarProperties.getItemLayoutResource(), parent, false);
         }
 
-        TextView dayLabel = (TextView) view.findViewById(R.id.dayLabel);
-        ImageView dayIcon = (ImageView) view.findViewById(R.id.dayIcon);
+        TextView dayLabel = view.findViewById(R.id.dayLabel);
+        TextView dayText = view.findViewById(R.id.dayText);
 
         Calendar day = new GregorianCalendar();
         day.setTime(getItem(position));
 
         // Loading an image of the event
-        if (dayIcon != null) {
-            loadIcon(dayIcon, day);
-        }
+//        if (dayText != null) {
+//            loadIcon(dayText, day);
+//        }
 
         setLabelColors(dayLabel, day);
 
