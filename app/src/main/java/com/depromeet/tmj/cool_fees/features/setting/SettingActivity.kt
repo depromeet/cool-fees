@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.ToggleButton
 import com.depromeet.tmj.cool_fees.R
 import com.depromeet.tmj.cool_fees.common.base.BaseActivity
+import com.depromeet.tmj.cool_fees.features.shared.TYPE_STAND
+import com.depromeet.tmj.cool_fees.features.shared.TYPE_WALL
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.jakewharton.rxbinding3.view.clicks
 import com.jakewharton.rxbinding3.widget.textChanges
@@ -59,8 +61,8 @@ class SettingActivity : BaseActivity(), SettingView {
         compositeDisposable.add(btn_confirm.clicks()
                 .throttleFirst(2000, TimeUnit.MILLISECONDS)
                 .map {
-                    if (tb_wall_type.isChecked) SettingPresenter.TYPE_WALL
-                    else SettingPresenter.TYPE_STAND
+                    if (tb_wall_type.isChecked) TYPE_WALL
+                    else TYPE_STAND
                 }
                 .subscribe { type ->
                     presenter.onClickConfirm(type, et_watt.text.toString().toInt())

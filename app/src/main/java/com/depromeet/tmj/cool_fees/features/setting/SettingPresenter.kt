@@ -4,6 +4,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.OnLifecycleEvent
 import com.depromeet.tmj.cool_fees.common.base.BasePresenter
 import com.depromeet.tmj.cool_fees.common.datastore.AppPreferenceDataStore
+import com.depromeet.tmj.cool_fees.features.shared.TYPE_STAND
+import com.depromeet.tmj.cool_fees.features.shared.TYPE_WALL
 
 class SettingPresenter(private val view: SettingView) : BasePresenter() {
 
@@ -34,10 +36,5 @@ class SettingPresenter(private val view: SettingView) : BasePresenter() {
 
     private fun setWatt(watt: Int) {
         AppPreferenceDataStore().putWatt(watt)
-    }
-
-    companion object {
-        const val TYPE_WALL = "TYPE_WALL"
-        const val TYPE_STAND = "TYPE_STAND"
     }
 }
