@@ -20,6 +20,7 @@ import java.util.Calendar;
 public class EventDay {
     private Calendar mDay;
     private Object mDrawable;
+    private String usingTime;
     private int mLabelColor;
     private boolean mIsDisabled;
 
@@ -30,6 +31,12 @@ public class EventDay {
         mDay = day;
     }
 
+
+    public EventDay(Calendar day, String usingTime) {
+        DateUtils.setMidnight(day);
+        this.mDay = day;
+        this.usingTime = usingTime;
+    }
     /**
      * @param day      Calendar object which represents a date of the event
      * @param drawable Drawable resource which will be displayed in a day cell
@@ -75,6 +82,10 @@ public class EventDay {
         mLabelColor = labelColor;
     }
 
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
+    public String getUsingTime() {
+        return usingTime;
+    }
 
     /**
      * @return An image resource which will be displayed in the day row

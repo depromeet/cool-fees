@@ -15,7 +15,6 @@
         android:fontFamily="@font/notosanscjkkr_medium"
         android:gravity="center"
         android:includeFontPadding="false"
-        android:text="1"
         android:textColor="@android:color/black"
         android:textSize="14sp" />
 
@@ -29,7 +28,6 @@
         android:fontFamily="@font/notosanscjkkr_bold"
         android:includeFontPadding="false"
         android:scaleType="centerInside"
-        android:text="12:34"
         android:textColor="@color/defaultColor"
         android:textSize="10sp" />
 

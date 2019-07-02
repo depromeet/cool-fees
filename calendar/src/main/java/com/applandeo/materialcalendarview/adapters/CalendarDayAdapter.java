@@ -63,9 +63,9 @@ class CalendarDayAdapter extends ArrayAdapter<Date> {
         day.setTime(getItem(position));
 
         // Loading an image of the event
-//        if (dayText != null) {
-//            loadIcon(dayText, day);
-//        }
+        if (dayText != null) {
+            loadUsingTime(dayText, day);
+        }
 
         setLabelColors(dayLabel, day);
 
@@ -127,22 +127,15 @@ class CalendarDayAdapter extends ArrayAdapter<Date> {
         return !mCalendarProperties.getDisabledDays().contains(day);
     }
 
-    private void loadIcon(ImageView dayIcon, Calendar day) {
+    private void loadUsingTime(TextView dayText, Calendar day) {
         if (mCalendarProperties.getEventDays() == null || !mCalendarProperties.getEventsEnabled()) {
-            dayIcon.setVisibility(View.GONE);
+            dayText.setVisibility(View.GONE);
             return;
         }
 
-        Stream.of(mCalendarProperties.getEventDays()).filter(eventDate ->
-                eventDate.getCalendar().equals(day)).findFirst().executeIfPresent(eventDay -> {
-
-            ImageUtils.loadImage(dayIcon, eventDay.getImageDrawable());
-
-            // If a day doesn't belong to current month then image is transparent
-            if (!isCurrentMonthDay(day) || !isActiveDay(day)) {
-                dayIcon.setAlpha(0.12f);
-            }
-
-        });
+        Stream.of(mCalendarProperties.getEventDays())
+                .filter(eventDate -> eventDate.getCalendar().equals(day))
+                .findFirst()
+                .executeIfPresent(eventDay -> dayText.setText(eventDay.getUsingTime()));
     }
 }
