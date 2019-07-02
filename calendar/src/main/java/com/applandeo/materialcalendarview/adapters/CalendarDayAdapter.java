@@ -58,6 +58,7 @@ class CalendarDayAdapter extends ArrayAdapter<Date> {
 
         TextView dayLabel = view.findViewById(R.id.dayLabel);
         TextView dayText = view.findViewById(R.id.dayText);
+        View divider = view.findViewById(R.id.divider);
 
         Calendar day = new GregorianCalendar();
         day.setTime(getItem(position));
@@ -71,6 +72,10 @@ class CalendarDayAdapter extends ArrayAdapter<Date> {
         } else {
             dayLabel.setVisibility(View.INVISIBLE);
             dayText.setVisibility(View.INVISIBLE);
+        }
+
+        if(position == 35) {
+            divider.setVisibility(View.INVISIBLE);
         }
 
         return view;
