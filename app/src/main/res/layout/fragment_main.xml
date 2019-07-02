@@ -66,6 +66,7 @@
         android:background="@drawable/image_speech_buble_white"
         android:fontFamily="@font/notosanscjkkr_bold"
         android:paddingTop="8dp"
+        android:paddingEnd="8dp"
         android:text="6월 에어컨 비용"
         android:textAlignment="center"
         android:textColor="@color/bg_blue"
