@@ -63,7 +63,6 @@ class TimeDialog : DialogFragment() {
         compositeDisposable.add(btn_ok.clicks()
                 .throttleFirst(2000, TimeUnit.MILLISECONDS)
                 .subscribe {
-                    // 데이터 베이스에 저장
                     useMinutes = np_hour.value * 60 + np_minute.value
                     listener.onClickOk(useMinutes)
                     dismissAllowingStateLoss()
