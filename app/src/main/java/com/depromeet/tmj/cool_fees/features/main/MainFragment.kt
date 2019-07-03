@@ -11,12 +11,13 @@ import com.depromeet.tmj.cool_fees.common.base.BaseFragment
 import com.depromeet.tmj.cool_fees.features.setting.SettingActivity
 import com.jakewharton.rxbinding3.view.clicks
 import kotlinx.android.synthetic.main.fragment_main.*
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 
 class MainFragment : BaseFragment(), MainView {
     private lateinit var listener: Listener
-    private lateinit var presenter: MainPresenter
+    private var presenter = MainPresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +31,14 @@ class MainFragment : BaseFragment(), MainView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUi()
+        presenter.onViewCreated()
+    }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser) {
+            presenter.setUserVisibleHint()
+        }
     }
 
     override fun setStandBackground() {
@@ -40,6 +49,13 @@ class MainFragment : BaseFragment(), MainView {
     override fun setWallBackground() {
         iv_stand_type.visibility = View.GONE
         iv_wall_type.visibility = View.VISIBLE
+    }
+
+    override fun setTotalUsageTime(usageMinutes: Int) {
+        if (tv_total_hours != null && tv_total_minutes != null) {
+            tv_total_hours.text = String.format("%02d", usageMinutes / 60)
+            tv_total_minutes.text = String.format("%02d", usageMinutes % 60)
+        }
     }
 
     fun setListener(listener: () -> Unit) {
@@ -56,6 +72,9 @@ class MainFragment : BaseFragment(), MainView {
     }
 
     private fun initUi() {
+        tv_live_fee.text = String.format(getString(R.string.format_monthly_fee),
+                Calendar.getInstance().get(Calendar.MONTH))
+
         compositeDisposable.add(btn_setting.clicks()
                 .throttleFirst(2000, TimeUnit.MILLISECONDS)
                 .subscribe { goToSettingActivity() })

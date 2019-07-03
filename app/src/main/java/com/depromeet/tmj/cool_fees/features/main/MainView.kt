@@ -6,4 +6,6 @@ interface MainView : BaseView {
     fun setStandBackground()
 
     fun setWallBackground()
+
+    fun setTotalUsageTime(usageMinutes: Int)
 }
