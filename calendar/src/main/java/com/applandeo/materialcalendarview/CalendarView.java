@@ -3,8 +3,10 @@ package com.applandeo.materialcalendarview;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+
 import androidx.annotation.ColorRes;
 import androidx.viewpager.widget.ViewPager;
+
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageButton;
@@ -399,6 +401,13 @@ public class CalendarView extends LinearLayout {
     public void setEvents(List<EventDay> eventDays) {
         if (mCalendarProperties.getEventsEnabled()) {
             mCalendarProperties.setEventDays(eventDays);
+            mCalendarPageAdapter.notifyDataSetChanged();
+        }
+    }
+
+    public void updateEvent(EventDay eventDay) {
+        if (mCalendarProperties.getEventsEnabled()) {
+            mCalendarProperties.updateEventDay(eventDay);
             mCalendarPageAdapter.notifyDataSetChanged();
         }
     }

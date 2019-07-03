@@ -2,6 +2,7 @@ package com.applandeo.materialcalendarview.utils;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+
 import androidx.core.content.ContextCompat;
 
 import com.annimon.stream.Stream;
@@ -244,6 +245,14 @@ public class CalendarProperties {
         mEventDays = eventDays;
     }
 
+    public void updateEventDay(EventDay eventDay) {
+        if (mEventDays.contains(eventDay)) {
+            mEventDays.set(mEventDays.indexOf(eventDay), eventDay);
+        } else {
+            mEventDays.add(eventDay);
+        }
+    }
+
     public List<Calendar> getDisabledDays() {
         return mDisabledDays;
     }
@@ -288,7 +297,7 @@ public class CalendarProperties {
             throw new UnsupportedMethodsException(ErrorsMessages.ONE_DAY_PICKER_MULTIPLE_SELECTION);
         }
 
-        if(mCalendarType == CalendarView.RANGE_PICKER && !DateUtils.isFullDatesRange(selectedDays)){
+        if (mCalendarType == CalendarView.RANGE_PICKER && !DateUtils.isFullDatesRange(selectedDays)) {
             throw new UnsupportedMethodsException(ErrorsMessages.RANGE_PICKER_NOT_RANGE);
         }
 

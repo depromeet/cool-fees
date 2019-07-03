@@ -1,8 +1,9 @@
 package com.applandeo.materialcalendarview;
 
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+
 import androidx.annotation.DrawableRes;
+import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 
 import com.applandeo.materialcalendarview.utils.DateUtils;
@@ -20,7 +21,7 @@ import java.util.Calendar;
 public class EventDay {
     private Calendar mDay;
     private Object mDrawable;
-    private String usingTime;
+    private int useMinutes;
     private int mLabelColor;
     private boolean mIsDisabled;
 
@@ -32,19 +33,10 @@ public class EventDay {
     }
 
 
-    public EventDay(Calendar day, String usingTime) {
+    public EventDay(Calendar day, int usingTime) {
         DateUtils.setMidnight(day);
         this.mDay = day;
-        this.usingTime = usingTime;
-    }
-    /**
-     * @param day      Calendar object which represents a date of the event
-     * @param drawable Drawable resource which will be displayed in a day cell
-     */
-    public EventDay(Calendar day, @DrawableRes int drawable) {
-        DateUtils.setMidnight(day);
-        mDay = day;
-        mDrawable = drawable;
+        this.useMinutes = usingTime;
     }
 
     /**
@@ -62,7 +54,7 @@ public class EventDay {
      * @param drawable   Drawable resource which will be displayed in a day cell
      * @param labelColor Color which will be displayed as label text color a day cell
      */
-    public EventDay(Calendar day, @DrawableRes int drawable , int labelColor) {
+    public EventDay(Calendar day, @DrawableRes int drawable, int labelColor) {
         DateUtils.setMidnight(day);
         mDay = day;
         mDrawable = drawable;
@@ -75,7 +67,7 @@ public class EventDay {
      * @param drawable   Drawable which will be displayed in a day cell
      * @param labelColor Color which will be displayed as label text color a day cell
      */
-    public EventDay(Calendar day, Drawable drawable , int labelColor) {
+    public EventDay(Calendar day, Drawable drawable, int labelColor) {
         DateUtils.setMidnight(day);
         mDay = day;
         mDrawable = drawable;
@@ -83,8 +75,8 @@ public class EventDay {
     }
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)
-    public String getUsingTime() {
-        return usingTime;
+    public int getUseMinutes() {
+        return useMinutes;
     }
 
     /**
@@ -122,5 +114,17 @@ public class EventDay {
     @RestrictTo(RestrictTo.Scope.LIBRARY)
     public void setEnabled(boolean enabled) {
         mIsDisabled = enabled;
+    }
+
+    public void setUseMinutes(int useMinutes) {
+        this.useMinutes = useMinutes;
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (obj instanceof EventDay) {
+            return ((EventDay) obj).mDay.equals(this.mDay);
+        }
+        return false;
     }
 }

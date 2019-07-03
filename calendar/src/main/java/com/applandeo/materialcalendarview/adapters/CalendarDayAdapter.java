@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.annimon.stream.Stream;
@@ -16,13 +15,13 @@ import com.applandeo.materialcalendarview.utils.CalendarProperties;
 import com.applandeo.materialcalendarview.utils.DateUtils;
 import com.applandeo.materialcalendarview.utils.DayColorsUtils;
 import com.applandeo.materialcalendarview.utils.EventDayUtils;
-import com.applandeo.materialcalendarview.utils.ImageUtils;
 import com.applandeo.materialcalendarview.utils.SelectedDay;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 import androidx.annotation.NonNull;
 
@@ -37,6 +36,7 @@ class CalendarDayAdapter extends ArrayAdapter<Date> {
     private LayoutInflater mLayoutInflater;
     private int mPageMonth;
     private Calendar mToday = DateUtils.getCalendar();
+    private final String format = "%02d:%02d";
 
     private CalendarProperties mCalendarProperties;
 
@@ -64,7 +64,7 @@ class CalendarDayAdapter extends ArrayAdapter<Date> {
         day.setTime(getItem(position));
         setLabelColors(dayLabel, day);
         dayLabel.setText(String.valueOf(day.get(Calendar.DAY_OF_MONTH)));
-        if(day.get(Calendar.MONTH) == mPageMonth) {
+        if (day.get(Calendar.MONTH) == mPageMonth) {
             // Loading an image of the event
             if (dayText != null) {
                 loadUsingTime(dayText, day);
@@ -74,7 +74,7 @@ class CalendarDayAdapter extends ArrayAdapter<Date> {
             dayText.setVisibility(View.INVISIBLE);
         }
 
-        if(position == 35) {
+        if (position == 35) {
             divider.setVisibility(View.INVISIBLE);
         }
 
@@ -144,6 +144,10 @@ class CalendarDayAdapter extends ArrayAdapter<Date> {
         Stream.of(mCalendarProperties.getEventDays())
                 .filter(eventDate -> eventDate.getCalendar().equals(day))
                 .findFirst()
-                .executeIfPresent(eventDay -> dayText.setText(eventDay.getUsingTime()));
+                .executeIfPresent(eventDay -> {
+                    int hour = eventDay.getUseMinutes() / 60;
+                    int minute = eventDay.getUseMinutes() % 60;
+                    dayText.setText(String.format(Locale.KOREA, format, hour, minute));
+                });
     }
 }

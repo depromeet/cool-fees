@@ -47,7 +47,14 @@ class CalendarFragment : BaseFragment(), CalendarView {
 
     private fun initCalendar() {
         calendar.setOnDayClickListener {
-            fragmentManager?.beginTransaction()?.add(TimeDialog.newInstance(), TimeDialog.TAG)?.commitAllowingStateLoss()
+            val timeDialog = TimeDialog.newInstance(it)
+            timeDialog.setListener { useMinutes ->
+                it.useMinutes = useMinutes
+                calendar.updateEvent(it)
+            }
+            fragmentManager?.beginTransaction()
+                    ?.add(timeDialog, TimeDialog.TAG)
+                    ?.commitAllowingStateLoss()
         }
     }
 
