@@ -25,6 +25,11 @@ class CalendarFragment : BaseFragment(), CalendarView {
         return inflater.inflate(R.layout.fragment_calendar, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initCalendar()
+    }
+
     override fun setStandBackground() {
         iv_stand_type.visibility = View.VISIBLE
         iv_wall_type.visibility = View.GONE
@@ -38,6 +43,12 @@ class CalendarFragment : BaseFragment(), CalendarView {
     private fun bindPresenter() {
         presenter = CalendarPresenter(this)
         lifecycle.addObserver(presenter)
+    }
+
+    private fun initCalendar() {
+        calendar.setOnDayClickListener {
+            fragmentManager?.beginTransaction()?.add(TimeDialog.newInstance(), TimeDialog.TAG)?.commitAllowingStateLoss()
+        }
     }
 
     interface Listener {
