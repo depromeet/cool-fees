@@ -15,4 +15,5 @@
     <string name="minute">분</string>
     <string name="input_using_time">에어컨 사용시간</string>
     <string name="warning_watt">이렇게 클리가 없는,\n에어컨 소비전력을 확인해보세요!</string>
+    <string name="format_monthly_time">%d월 에어컨 총 사용시간</string>
 </resources>

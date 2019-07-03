@@ -145,7 +145,8 @@ class CalendarDayAdapter extends ArrayAdapter<Date> {
                 .executeIfPresent(eventDay -> {
                     int hour = eventDay.getUseMinutes() / 60;
                     int minute = eventDay.getUseMinutes() % 60;
-                    dayText.setText(String.format(Locale.KOREA, format, hour, minute));
+                    if (hour != 0 || minute != 0)
+                        dayText.setText(String.format(Locale.KOREA, format, hour, minute));
                 });
     }
 }

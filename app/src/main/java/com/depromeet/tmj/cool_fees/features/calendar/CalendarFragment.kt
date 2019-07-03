@@ -45,6 +45,10 @@ class CalendarFragment : BaseFragment(), CalendarView {
         iv_wall_type.visibility = View.VISIBLE
     }
 
+    private fun setTitle(calendar: Calendar) {
+        tv_monthly_time.text = String.format(getString(R.string.format_monthly_time), calendar.get(Calendar.MONTH) + 1)
+    }
+
     private fun bindPresenter() {
         presenter = CalendarPresenter(this)
         lifecycle.addObserver(presenter)
@@ -59,30 +63,55 @@ class CalendarFragment : BaseFragment(), CalendarView {
 
                 saveUsageToRealm(usage)
                 calendar.updateEvent(it)
+                setTotalUsageTime(getTotalUsageTime(getMonthlyUsageList(calendar.currentPageDate)))
             }
             fragmentManager?.beginTransaction()
-                ?.add(timeDialog, TimeDialog.TAG)
-                ?.commitAllowingStateLoss()
+                    ?.add(timeDialog, TimeDialog.TAG)
+                    ?.commitAllowingStateLoss()
         }
         calendar.setOnForwardPageChangeListener { nextCalendar ->
-            Log.d(TAG, "Next calendar : " + nextCalendar.time)
-            getMonthlyUsageList(nextCalendar)?.let { eventDays ->
-                calendar.setEvents(eventDays)
+            val nextUsageList = getMonthlyUsageList(nextCalendar)
+
+            nextUsageList?.let { useageList ->
+                calendar.setEvents(getEventDaysFromUsage(useageList))
             }
+            setTotalUsageTime(getTotalUsageTime(nextUsageList))
+            setTitle(nextCalendar)
         }
         calendar.setOnPreviousPageChangeListener { preCalendar ->
-            Log.d(TAG, "Previous calendar : " + preCalendar.time)
-            getMonthlyUsageList(preCalendar)?.let { eventDays ->
-                calendar.setEvents(eventDays)
+            val previousUsageList = getMonthlyUsageList(preCalendar)
+
+            previousUsageList?.let { useageList ->
+                calendar.setEvents(getEventDaysFromUsage(useageList))
             }
+            setTotalUsageTime(getTotalUsageTime(previousUsageList))
+            setTitle(preCalendar)
         }
 
-        getMonthlyUsageList(calendar.currentPageDate)?.let { eventDays ->
-            calendar.setEvents(eventDays)
+        val currentUsageList = getMonthlyUsageList(calendar.currentPageDate)
+        currentUsageList?.let { useageList ->
+            calendar.setEvents(getEventDaysFromUsage(useageList))
         }
+        setTotalUsageTime(getTotalUsageTime(currentUsageList))
+        setTitle(calendar.currentPageDate)
     }
 
-    private fun getMonthlyUsageList(inputCalendar: Calendar): List<EventDay>? {
+    private fun setTotalUsageTime(totalMinutes: Int) {
+        tv_total_hours.text = String.format("%02d", totalMinutes / 60)
+        tv_total_minutes.text = String.format("%02d", totalMinutes % 60)
+    }
+
+    private fun getTotalUsageTime(usageList: List<Usage>?): Int {
+        var sum = 0
+        usageList?.let {
+            for (usage in it) {
+                sum += usage.usingTime
+            }
+        }
+        return sum
+    }
+
+    private fun getMonthlyUsageList(inputCalendar: Calendar): List<Usage>? {
         val firstCalendar = Calendar.getInstance().apply {
             timeInMillis = inputCalendar.timeInMillis
             set(Calendar.DAY_OF_MONTH, 1)
@@ -91,21 +120,24 @@ class CalendarFragment : BaseFragment(), CalendarView {
             timeInMillis = inputCalendar.timeInMillis
             set(Calendar.DAY_OF_MONTH, inputCalendar.getActualMaximum(Calendar.DAY_OF_MONTH))
         }
-        val useList = Realm.getDefaultInstance().where(Usage::class.java)
-            .between("time", firstCalendar.timeInMillis, lastcalendar.timeInMillis).findAll()
+        val usageList = Realm.getDefaultInstance().where(Usage::class.java)
+                .between("time", firstCalendar.timeInMillis, lastcalendar.timeInMillis).findAll()
+        if (usageList.isNotEmpty())
+            return usageList
+        else
+            return null
+    }
 
-        if (useList.size > 0) {
-            val eventDays = arrayListOf<EventDay>()
+    private fun getEventDaysFromUsage(useList: List<Usage>): List<EventDay> {
+        val eventDays = arrayListOf<EventDay>()
 
-            for (usage in useList) {
-                val usageCalendar = Calendar.getInstance().apply {
-                    timeInMillis = usage.time
-                }
-                eventDays.add(EventDay(usageCalendar, usage.usingTime))
+        for (usage in useList) {
+            val usageCalendar = Calendar.getInstance().apply {
+                timeInMillis = usage.time
             }
-            return eventDays
+            eventDays.add(EventDay(usageCalendar, usage.usingTime))
         }
-        return null
+        return eventDays
     }
 
     private fun saveUsageToRealm(usage: Usage) {

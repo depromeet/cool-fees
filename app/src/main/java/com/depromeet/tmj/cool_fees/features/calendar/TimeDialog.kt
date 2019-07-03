@@ -34,8 +34,8 @@ class TimeDialog : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initUi()
         initNumberPicker()
+        initUi()
     }
 
     fun setListener(listener: (Int) -> Unit) {
