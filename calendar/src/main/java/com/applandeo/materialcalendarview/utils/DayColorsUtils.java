@@ -20,17 +20,16 @@ public class DayColorsUtils {
      * It is used to set day cell (numbers) style.
      *
      * @param textView   TextView containing a day number
-     * @param textColor  A resource of a color of the day number
+     *
      * @param typeface   A type of text style, can be set as NORMAL or BOLD
      * @param background A resource of a background drawable
      */
-    public static void setDayColors(TextView textView, int textColor, int typeface, int background) {
+    public static void setDayColors(TextView textView, int typeface, int background) {
         if (textView == null) {
             return;
         }
 
         textView.setTypeface(null, typeface);
-        textView.setTextColor(textColor);
         textView.setBackgroundResource(background);
     }
 
@@ -43,7 +42,7 @@ public class DayColorsUtils {
      * @param calendarProperties A resource of a selection background color
      */
     public static void setSelectedDayColors(TextView dayLabel, CalendarProperties calendarProperties) {
-        setDayColors(dayLabel, calendarProperties.getSelectionLabelColor(), Typeface.NORMAL,
+        setDayColors(dayLabel, Typeface.NORMAL,
                 R.drawable.background_color_circle_selector);
 
         dayLabel.getBackground().setColorFilter(calendarProperties.getSelectionColor(),
@@ -64,19 +63,16 @@ public class DayColorsUtils {
     public static void setCurrentMonthDayColors(Calendar day, Calendar today, TextView dayLabel,
                                                 CalendarProperties calendarProperties) {
         if (today.equals(day)) {
-            setDayColors(dayLabel, calendarProperties.getTodayLabelColor(), Typeface.BOLD,
+            setDayColors(dayLabel, Typeface.BOLD,
                     R.drawable.background_transparent);
         } else if (EventDayUtils.isEventDayWithLabelColor(day, calendarProperties)) {
             EventDayUtils.getEventDayWithLabelColor(day, calendarProperties).executeIfPresent(eventDay ->
-                DayColorsUtils.setDayColors(dayLabel, eventDay.getLabelColor(),
-                        Typeface.NORMAL, R.drawable.background_transparent));
+                DayColorsUtils.setDayColors(dayLabel, Typeface.NORMAL, R.drawable.background_transparent));
 
         } else if (calendarProperties.getHighlightedDays().contains(day)) {
-            setDayColors(dayLabel, calendarProperties.getHighlightedDaysLabelsColor(),
-                    Typeface.NORMAL, R.drawable.background_transparent);
+            setDayColors(dayLabel, Typeface.NORMAL, R.drawable.background_transparent);
         } else {
-            setDayColors(dayLabel, calendarProperties.getDaysLabelsColor(), Typeface.NORMAL,
-                    R.drawable.background_transparent);
+            setDayColors(dayLabel, Typeface.NORMAL, R.drawable.background_transparent);
         }
     }
 }

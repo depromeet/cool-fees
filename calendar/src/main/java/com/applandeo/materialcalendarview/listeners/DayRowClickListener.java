@@ -182,7 +182,6 @@ public class DayRowClickListener implements AdapterView.OnItemClickListener {
         boolean enabledDay = mCalendarProperties.getDisabledDays().contains(eventDay.getCalendar())
                 || !isBetweenMinAndMax(eventDay.getCalendar());
 
-        eventDay.setEnabled(enabledDay);
         mCalendarProperties.getOnDayClickListener().onDayClick(eventDay);
     }
 }

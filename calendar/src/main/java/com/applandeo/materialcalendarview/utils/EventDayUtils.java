@@ -16,7 +16,7 @@ public class EventDayUtils {
     public static boolean isEventDayWithLabelColor(Calendar day, CalendarProperties calendarProperties) {
         if (calendarProperties.getEventDays() != null || calendarProperties.getEventsEnabled()) {
             return Stream.of(calendarProperties.getEventDays()).anyMatch(eventDate ->
-                    eventDate.getCalendar().equals(day) && eventDate.getLabelColor() != 0);
+                    eventDate.getCalendar().equals(day));
         }
 
         return false;
@@ -30,7 +30,7 @@ public class EventDayUtils {
      */
     public static Optional<EventDay> getEventDayWithLabelColor(Calendar day, CalendarProperties calendarProperties) {
         return Stream.of(calendarProperties.getEventDays())
-                .filter(eventDate -> eventDate.getCalendar().equals(day) && eventDate.getLabelColor() != 0)
+                .filter(eventDate -> eventDate.getCalendar().equals(day))
                 .findFirst();
     }
 }
