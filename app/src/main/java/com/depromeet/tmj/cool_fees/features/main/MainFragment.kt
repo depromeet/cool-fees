@@ -11,6 +11,7 @@ import com.depromeet.tmj.cool_fees.common.base.BaseFragment
 import com.depromeet.tmj.cool_fees.features.setting.SettingActivity
 import com.jakewharton.rxbinding3.view.clicks
 import kotlinx.android.synthetic.main.fragment_main.*
+import java.text.DecimalFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -18,6 +19,7 @@ import java.util.concurrent.TimeUnit
 class MainFragment : BaseFragment(), MainView {
     private lateinit var listener: Listener
     private var presenter = MainPresenter(this)
+    private val decimalFormat = DecimalFormat("#,###")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +58,11 @@ class MainFragment : BaseFragment(), MainView {
             tv_total_hours.text = String.format("%02d", usageMinutes / 60)
             tv_total_minutes.text = String.format("%02d", usageMinutes % 60)
         }
+    }
+
+    override fun setTotalFee(fee: Int) {
+        if (tv_fee != null)
+            tv_fee.text = decimalFormat.format(fee)
     }
 
     fun setListener(listener: () -> Unit) {

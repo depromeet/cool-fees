@@ -12,6 +12,7 @@ import io.realm.Realm
 import java.util.*
 
 class MainPresenter(private val view: MainView) : BasePresenter() {
+    private var totalUsageTime = 0
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     private fun onResume() {
@@ -19,11 +20,19 @@ class MainPresenter(private val view: MainView) : BasePresenter() {
     }
 
     fun onViewCreated() {
-        view.setTotalUsageTime(getMonthlyUsageTime(Calendar.getInstance()))
+        totalUsageTime = getMonthlyUsageTime(Calendar.getInstance())
+        view.setTotalUsageTime(totalUsageTime)
+        view.setTotalFee(getElectronicUsage().toInt())
     }
 
     fun setUserVisibleHint() {
-        view.setTotalUsageTime(getMonthlyUsageTime(Calendar.getInstance()))
+        totalUsageTime = getMonthlyUsageTime(Calendar.getInstance())
+        view.setTotalUsageTime(totalUsageTime)
+        view.setTotalFee(getElectronicUsage().toInt())
+    }
+
+    private fun getElectronicUsage(): Double {
+        return ((AppPreferenceDataStore().getWatt() * totalUsageTime) / 1000).toDouble()
     }
 
     private fun setBackground() {

@@ -8,4 +8,6 @@ interface MainView : BaseView {
     fun setWallBackground()
 
     fun setTotalUsageTime(usageMinutes: Int)
+
+    fun setTotalFee(fee: Int)
 }
