@@ -1,16 +1,18 @@
 package com.depromeet.tmj.cool_fees.features.calendar
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintSet
 import com.applandeo.materialcalendarview.EventDay
+import com.depromeet.tmj.cool_fees.BuildConfig
 import com.depromeet.tmj.cool_fees.R
 import com.depromeet.tmj.cool_fees.common.base.BaseFragment
 import com.depromeet.tmj.cool_fees.model.Usage
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
 import io.realm.Realm
 import kotlinx.android.synthetic.main.fragment_calendar.*
 import java.util.*
@@ -33,6 +35,7 @@ class CalendarFragment : BaseFragment(), CalendarView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initCalendar()
+        initAdmob()
     }
 
     override fun setStandBackground() {
@@ -146,11 +149,38 @@ class CalendarFragment : BaseFragment(), CalendarView {
         }
     }
 
+    private fun initAdmob() {
+        val adView = AdView(context)
+
+        adView.id = ADVIEW_ID
+        adView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        adView.adSize = AdSize.SMART_BANNER
+        if (BuildConfig.DEBUG) {
+            adView.adUnitId = getString(R.string.admob_ad_test_id)
+        } else {
+            adView.adUnitId = getString(R.string.admob_ad_id)
+        }
+        root.addView(adView, 0)
+
+        val constraintSet = ConstraintSet()
+        constraintSet.clone(root)
+        constraintSet.connect(adView.id, ConstraintSet.START, root.id, ConstraintSet.START)
+        constraintSet.connect(adView.id, ConstraintSet.END, root.id, ConstraintSet.END)
+        constraintSet.connect(adView.id, ConstraintSet.BOTTOM, root.id, ConstraintSet.BOTTOM)
+
+        constraintSet.connect(R.id.calendar, ConstraintSet.BOTTOM, adView.id, ConstraintSet.TOP, 0)
+        constraintSet.applyTo(root)
+
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+    }
+
     interface Listener {
     }
 
     companion object {
         const val TAG = "CalendarFragment"
+        private const val ADVIEW_ID = 100
 
         fun newInstance(): CalendarFragment {
             return CalendarFragment()

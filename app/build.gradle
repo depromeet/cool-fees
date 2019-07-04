@@ -42,6 +42,9 @@ dependencies {
     implementation group: 'io.reactivex.rxjava2', name: 'rxjava', version: "$rxjava_version"
     implementation group: 'com.jakewharton.rxbinding3', name: 'rxbinding', version: "$rxbinding_version"
 
+    // Admob
+    implementation 'com.google.android.gms:play-services-ads:17.2.0'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
