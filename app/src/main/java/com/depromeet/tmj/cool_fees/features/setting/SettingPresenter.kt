@@ -21,9 +21,13 @@ class SettingPresenter(private val view: SettingView) : BasePresenter() {
 
     fun onClickConfirm(type: String, watt: Int) {
         setAirType(type)
-        setFirstLaunchDisable()
         setWatt(watt)
-        view.finish()
+        if(isFirstLaunch()) {
+            setFirstLaunchDisable()
+            view.goToMainActivity()
+        } else {
+            view.finish()
+        }
     }
 
     private fun setAirType(type: String) {
@@ -32,6 +36,10 @@ class SettingPresenter(private val view: SettingView) : BasePresenter() {
 
     private fun setFirstLaunchDisable() {
         AppPreferenceDataStore().putFirstLaunch(false)
+    }
+
+    private fun isFirstLaunch(): Boolean {
+        return AppPreferenceDataStore().isFirstLaunch()
     }
 
     private fun setWatt(watt: Int) {

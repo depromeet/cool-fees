@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ToggleButton
+import com.depromeet.tmj.cool_fees.MainActivity
 import com.depromeet.tmj.cool_fees.R
 import com.depromeet.tmj.cool_fees.common.base.BaseActivity
 import com.depromeet.tmj.cool_fees.features.shared.TYPE_STAND
@@ -37,6 +38,10 @@ class SettingActivity : BaseActivity(), SettingView {
 
     override fun setWatt(watt: Int) {
         et_watt.setText(watt.toString())
+    }
+
+    override fun goToMainActivity() {
+        startActivity(MainActivity.getCallingIntent(this))
     }
 
     private fun bindPresenter() {
