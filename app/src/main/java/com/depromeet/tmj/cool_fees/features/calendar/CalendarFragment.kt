@@ -169,6 +169,7 @@ class CalendarFragment : BaseFragment(), CalendarView {
         constraintSet.connect(adView.id, ConstraintSet.BOTTOM, root.id, ConstraintSet.BOTTOM)
 
         constraintSet.connect(R.id.calendar, ConstraintSet.BOTTOM, adView.id, ConstraintSet.TOP, 0)
+        constraintSet.connect(R.id.bg_calendar, ConstraintSet.BOTTOM, adView.id, ConstraintSet.TOP, 0)
         constraintSet.applyTo(root)
 
         val adRequest = AdRequest.Builder().build()
