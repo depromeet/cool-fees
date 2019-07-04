@@ -1,11 +1,13 @@
 package com.depromeet.tmj.cool_fees.features.main
 
 
+import android.animation.ValueAnimator
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.depromeet.tmj.cool_fees.R
 import com.depromeet.tmj.cool_fees.common.base.BaseFragment
 import com.depromeet.tmj.cool_fees.features.setting.SettingActivity
@@ -61,8 +63,12 @@ class MainFragment : BaseFragment(), MainView {
     }
 
     override fun setTotalFee(fee: Int) {
-        if (tv_fee != null)
-            tv_fee.text = decimalFormat.format(fee)
+        if (tv_fee != null) {
+            val animator = ValueAnimator.ofInt(0, fee)
+            animator.duration = 500
+            animator.addUpdateListener { animation -> tv_fee.text = decimalFormat.format(animation.animatedValue as Int) }
+            animator.start()
+        }
     }
 
     fun setListener(listener: () -> Unit) {
