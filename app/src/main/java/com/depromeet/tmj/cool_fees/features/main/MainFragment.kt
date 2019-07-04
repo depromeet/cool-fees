@@ -80,7 +80,7 @@ class MainFragment : BaseFragment(), MainView {
 
     private fun initUi() {
         tv_live_fee.text = String.format(getString(R.string.format_monthly_fee),
-                Calendar.getInstance().get(Calendar.MONTH))
+                Calendar.getInstance().get(Calendar.MONTH) + 1)
 
         compositeDisposable.add(btn_setting.clicks()
                 .throttleFirst(2000, TimeUnit.MILLISECONDS)
