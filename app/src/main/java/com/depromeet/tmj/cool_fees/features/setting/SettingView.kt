@@ -10,4 +10,6 @@ interface SettingView : BaseView {
     fun finish()
 
     fun setWatt(watt: Int)
+
+    fun goToMainActivity()
 }

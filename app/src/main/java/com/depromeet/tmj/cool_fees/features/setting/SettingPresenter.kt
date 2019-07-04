@@ -4,6 +4,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.OnLifecycleEvent
 import com.depromeet.tmj.cool_fees.common.base.BasePresenter
 import com.depromeet.tmj.cool_fees.common.datastore.AppPreferenceDataStore
+import com.depromeet.tmj.cool_fees.features.shared.TYPE_STAND
+import com.depromeet.tmj.cool_fees.features.shared.TYPE_WALL
 
 class SettingPresenter(private val view: SettingView) : BasePresenter() {
 
@@ -19,9 +21,13 @@ class SettingPresenter(private val view: SettingView) : BasePresenter() {
 
     fun onClickConfirm(type: String, watt: Int) {
         setAirType(type)
-        setFirstLaunchDisable()
         setWatt(watt)
-        view.finish()
+        if(isFirstLaunch()) {
+            setFirstLaunchDisable()
+            view.goToMainActivity()
+        } else {
+            view.finish()
+        }
     }
 
     private fun setAirType(type: String) {
@@ -32,12 +38,11 @@ class SettingPresenter(private val view: SettingView) : BasePresenter() {
         AppPreferenceDataStore().putFirstLaunch(false)
     }
 
-    private fun setWatt(watt: Int) {
-        AppPreferenceDataStore().putWatt(watt)
+    private fun isFirstLaunch(): Boolean {
+        return AppPreferenceDataStore().isFirstLaunch()
     }
 
-    companion object {
-        const val TYPE_WALL = "TYPE_WALL"
-        const val TYPE_STAND = "TYPE_STAND"
+    private fun setWatt(watt: Int) {
+        AppPreferenceDataStore().putWatt(watt)
     }
 }

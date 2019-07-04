@@ -1,4 +1,9 @@
 <resources>
+    <!-- Admob -->
+    <string name="admob_app_id">ca-app-pub-1527951560812478~2718009639</string>
+    <string name="admob_ad_id">ca-app-pub-1527951560812478/7778764628</string>
+    <string name="admob_ad_test_id">ca-app-pub-3940256099942544/6300978111</string>
+
     <string name="app_name">cool-fees</string>
     <string name="title_activity_setting">SettingActivity</string>
     <string name="setting_title">어떤 에어컨을\n사용하세요?</string>
@@ -7,12 +12,13 @@
     <string name="confirm">확인</string>
     <string name="question">\?\u00A0</string>
     <string name="info_desc">에너지소비효율등급</string>
-    <string name="go_calendar">이번달 에어컨 비용 보기</string>
+    <string name="go_calendar">에어컨 사용시간 입력하기</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="live_fee">에어컨 실시간 비용</string>
+    <string name="format_monthly_fee">%d월 에어컨 비용</string>
     <string name="won">원</string>
-    <string name="using_time">사용시간</string>
+    <string name="using_time">총 사용 시간</string>
     <string name="minute">분</string>
     <string name="input_using_time">에어컨 사용시간</string>
     <string name="warning_watt">이렇게 클리가 없는,\n에어컨 소비전력을 확인해보세요!</string>
+    <string name="format_monthly_time">%d월 에어컨 총 사용시간</string>
 </resources>
