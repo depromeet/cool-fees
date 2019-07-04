@@ -22,17 +22,17 @@ class MainPresenter(private val view: MainView) : BasePresenter() {
     fun onViewCreated() {
         totalUsageTime = getMonthlyUsageTime(Calendar.getInstance())
         view.setTotalUsageTime(totalUsageTime)
-        view.setTotalFee(getElectronicUsage().toInt())
+        view.setTotalFee(calculateFee(Calendar.getInstance(), getElectronicUsage()))
     }
 
     fun setUserVisibleHint() {
         totalUsageTime = getMonthlyUsageTime(Calendar.getInstance())
         view.setTotalUsageTime(totalUsageTime)
-        view.setTotalFee(getElectronicUsage().toInt())
+        view.setTotalFee(calculateFee(Calendar.getInstance(), getElectronicUsage()))
     }
 
     private fun getElectronicUsage(): Double {
-        return ((AppPreferenceDataStore().getWatt() * totalUsageTime) / 1000).toDouble()
+        return ((AppPreferenceDataStore().getWatt() * totalUsageTime/60) / 1000).toDouble()
     }
 
     private fun setBackground() {
