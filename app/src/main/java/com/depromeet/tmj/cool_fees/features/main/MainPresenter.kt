@@ -17,9 +17,6 @@ class MainPresenter(private val view: MainView) : BasePresenter() {
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     private fun onResume() {
         setBackground()
-    }
-
-    fun onViewCreated() {
         totalUsageTime = getMonthlyUsageTime(Calendar.getInstance())
         view.setTotalUsageTime(totalUsageTime)
         view.setTotalFee(calculateFee(Calendar.getInstance(), getElectronicUsage()))

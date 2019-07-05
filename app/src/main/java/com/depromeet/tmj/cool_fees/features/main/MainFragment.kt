@@ -35,7 +35,6 @@ class MainFragment : BaseFragment(), MainView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUi()
-        presenter.onViewCreated()
     }
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
