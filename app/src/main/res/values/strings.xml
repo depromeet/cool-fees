@@ -21,4 +21,5 @@
     <string name="input_using_time">에어컨 사용시간</string>
     <string name="warning_watt">이렇게 클리가 없는,\n에어컨 소비전력을 확인해보세요!</string>
     <string name="format_monthly_time">%d월 에어컨 총 사용시간</string>
+    <string name="tv_warning">실제 전기 요금과 차이가 있을 수 있습니다.\n(각종 요금 할인은 적용하지 않았습니다.)</string>
 </resources>
