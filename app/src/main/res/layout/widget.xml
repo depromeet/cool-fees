@@ -36,14 +36,13 @@
         android:layout_height="47dp"
         android:layout_below="@id/tv_title"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="14dp"
         android:background="@drawable/image_speech_buble_white_small"
         android:fontFamily="@font/notosanscjkkr_bold"
         android:paddingTop="8dp"
         android:paddingEnd="8dp"
         android:textAlignment="center"
         android:textColor="@color/bg_blue"
-        android:textSize="16sp" />
+        android:textSize="12sp" />
 
     <LinearLayout
         android:id="@+id/ll_fee"

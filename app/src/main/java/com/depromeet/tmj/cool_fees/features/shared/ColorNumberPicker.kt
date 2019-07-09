@@ -38,8 +38,9 @@ class ColorNumberPicker : NumberPicker {
                 intArrayOf(ContextCompat.getColor(context, R.color.white), ContextCompat.getColor(context, R.color.white))
         )
         if (view is EditText) {
-            view.textSize = 25f
+            view.textSize = 18f
             view.setTextColor(colors)
+            view.isEnabled = false
         }
     }
 

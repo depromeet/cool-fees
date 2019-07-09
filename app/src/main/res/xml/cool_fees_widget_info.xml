@@ -3,7 +3,7 @@
     android:initialKeyguardLayout="@layout/widget"
     android:initialLayout="@layout/widget"
     android:minWidth="360dp"
-    android:minHeight="80dp"
+    android:minHeight="140dp"
     android:previewImage="@drawable/image_speech_bubble_blue"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="86400000"
