@@ -6,6 +6,7 @@ import android.content.Context
 import android.widget.RemoteViews
 import com.applandeo.materialcalendarview.utils.DateUtils
 import com.depromeet.tmj.cool_fees.common.datastore.AppPreferenceDataStore
+import com.depromeet.tmj.cool_fees.features.main.calculateFee
 import com.depromeet.tmj.cool_fees.model.Usage
 import io.realm.Realm
 import java.text.DecimalFormat
@@ -47,9 +48,13 @@ class CoolFeesWidget : AppWidgetProvider() {
             views.setTextViewText(R.id.tv_total_minutes, (totalUsageTime % 60).toString())
 
             views.setTextViewText(R.id.tv_fee, DecimalFormat("#,###")
-                    .format(((AppPreferenceDataStore().getWatt() * totalUsageTime) / 1000)))
+                    .format(calculateFee(Calendar.getInstance(), getElectronicUsage(totalUsageTime))))
 
             appWidgetManager.updateAppWidget(appWidgetId, views)
+        }
+
+        private fun getElectronicUsage(totalUsageTime: Int): Double {
+            return ((AppPreferenceDataStore().getWatt() * totalUsageTime/60) / 1000).toDouble()
         }
 
         private fun getMonthlyUsageTime(inputCalendar: Calendar): Int {
