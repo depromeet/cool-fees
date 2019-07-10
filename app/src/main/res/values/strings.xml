@@ -4,7 +4,7 @@
     <string name="admob_ad_id">ca-app-pub-1527951560812478/7778764628</string>
     <string name="admob_ad_test_id">ca-app-pub-3940256099942544/6300978111</string>
 
-    <string name="app_name">cool-fees</string>
+    <string name="app_name">쿨피스</string>
     <string name="title_activity_setting">SettingActivity</string>
     <string name="setting_title">어떤 에어컨을\n사용하세요?</string>
     <string name="wall_type">벽걸이형</string>
