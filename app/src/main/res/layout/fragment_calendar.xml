@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_blue"
+    tools:context=".features.calendar.CalendarFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.14" />
+
+    <TextView
+        android:id="@+id/tv_monthly_time"
+        android:layout_width="195dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="47dp"
+        android:background="@drawable/image_speech_buble_white"
+        android:fontFamily="@font/notosanscjkkr_bold"
+        android:paddingTop="8dp"
+        android:paddingEnd="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/bg_blue"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_total_hours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanscjkkr_bold"
+        android:text="99"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@id/tv_hour"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/tv_monthly_time"
+        app:layout_constraintTop_toBottomOf="@id/tv_monthly_time" />
+
+    <TextView
+        android:id="@+id/tv_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:text="시간"
+        android:textColor="@color/orange"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_total_hours"
+        app:layout_constraintEnd_toStartOf="@id/tv_total_minutes"
+        app:layout_constraintStart_toEndOf="@id/tv_total_hours" />
+
+    <TextView
+        android:id="@+id/tv_total_minutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/notosanscjkkr_bold"
+        android:text="99"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_total_hours"
+        app:layout_constraintEnd_toStartOf="@id/tv_minute"
+        app:layout_constraintStart_toEndOf="@id/tv_hour"
+        app:layout_constraintTop_toTopOf="@id/tv_total_hours" />
+
+    <TextView
+        android:id="@+id/tv_minute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:text="@string/minute"
+        android:textColor="@color/orange"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_hour"
+        app:layout_constraintEnd_toEndOf="@id/tv_monthly_time"
+        app:layout_constraintStart_toEndOf="@id/tv_total_minutes"
+        app:layout_constraintTop_toTopOf="@id/tv_hour" />
+
+    <ImageView
+        android:id="@+id/iv_wall_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/bg_wall_type"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_stand_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/bg_stand_type"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/gl_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent" />
+
+    <View
+        android:id="@+id/bg_calendar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/shape_rect_white_top_3r"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_total_hours" />
+
+    <com.applandeo.materialcalendarview.CalendarView
+        android:id="@+id/calendar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bg_calendar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#0d0d0d"
+    tools:context=".features.calendar.TimeDialog">
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16sp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:text="June 12, 2019"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.depromeet.tmj.cool_fees.features.shared.ColorNumberPicker
+        android:id="@+id/np_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="62dp"
+        android:descendantFocusability="blocksDescendants"
+        app:layout_constraintBottom_toTopOf="@id/btn_ok"
+        app:layout_constraintEnd_toStartOf="@id/tv_hour"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_date" />
+
+    <TextView
+        android:id="@+id/tv_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:text="시간"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/np_hour"
+        app:layout_constraintEnd_toStartOf="@id/np_minute"
+        app:layout_constraintStart_toEndOf="@id/np_hour"
+        app:layout_constraintTop_toTopOf="@id/np_hour" />
+
+    <com.depromeet.tmj.cool_fees.features.shared.ColorNumberPicker
+        android:id="@+id/np_minute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="62dp"
+        android:descendantFocusability="blocksDescendants"
+        app:layout_constraintBottom_toBottomOf="@id/np_hour"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_hour"
+        app:layout_constraintTop_toTopOf="@id/np_hour" />
+
+    <TextView
+        android:id="@+id/tv_minute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:text="@string/minute"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/np_hour"
+        app:layout_constraintStart_toEndOf="@id/np_minute"
+        app:layout_constraintTop_toTopOf="@id/np_hour" />
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#0d0d0d"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:paddingStart="16dp"
+        android:paddingEnd="8dp"
+        android:text="cancel"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_ok" />
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#0d0d0d"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:paddingStart="8dp"
+        android:paddingEnd="16dp"
+        android:text="OK"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

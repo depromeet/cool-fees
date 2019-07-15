@@ -1,18 +1,18 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.depromeet.tmj.cool_fees"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -20,14 +20,48 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    signingConfigs {
+        debug {
+            storeFile file("keystore/debug.keystore")
+        }
+        release {
+            storeFile file("keystore/release.keystore")
+            storePassword "depromeet2019"
+            keyAlias "depromeet"
+            keyPassword "depromeet2019"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // Androidx, material design
+    implementation group: 'androidx.appcompat', name: 'appcompat', version: "$appcompat_version"
+    implementation group: 'com.google.android.material', name: 'material', version: "$material_version"
+    implementation group: 'androidx.constraintlayout', name: 'constraintlayout', version: "$constraintlayout_version"
+    implementation group: 'androidx.constraintlayout', name: 'constraintlayout-solver', version: "$constraintlayout_version"
+
+    // Rx
+    implementation group: 'io.reactivex.rxjava2', name: 'rxandroid', version: "$rxandroid_version"
+    implementation group: 'io.reactivex.rxjava2', name: 'rxjava', version: "$rxjava_version"
+    implementation group: 'com.jakewharton.rxbinding3', name: 'rxbinding', version: "$rxbinding_version"
+
+    // Admob
+    implementation 'com.google.android.gms:play-services-ads:17.2.0'
+
+    // Lottie
+    implementation 'com.airbnb.android:lottie:3.0.0'
+
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation project(path: ':calendar')
 }
