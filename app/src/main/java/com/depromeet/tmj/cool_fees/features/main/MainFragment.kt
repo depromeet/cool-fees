@@ -35,7 +35,6 @@ class MainFragment : BaseFragment(), MainView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUi()
-        presenter.onViewCreated()
     }
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
@@ -100,6 +99,7 @@ class MainFragment : BaseFragment(), MainView {
     private fun goToSettingActivity() {
         context?.let { context ->
             startActivity(SettingActivity.getCallingIntent(context))
+            activity?.overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
         }
     }
 

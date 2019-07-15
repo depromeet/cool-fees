@@ -19,7 +19,7 @@
             android:layout_gravity="start|center_vertical"
             android:includeFontPadding="false"
             android:fontFamily="@font/notosanscjkkr_bold"
-            android:textColor="@color/white"
+            android:textColor="@color/black_text"
             android:textSize="10sp" />
 
         <LinearLayout
@@ -40,7 +40,7 @@
                 android:shadowDy="4.0"
                 android:shadowRadius="3.0"
                 android:text="30,970"
-                android:textColor="@color/white"
+                android:textColor="@color/black_text"
                 android:textSize="14sp" />
 
             <TextView
@@ -56,7 +56,7 @@
                 android:layout_gravity="center_vertical"
                 android:shadowRadius="3.0"
                 android:text="@string/won"
-                android:textColor="@color/white"
+                android:textColor="@color/black_text"
                 android:textSize="10sp" />
 
             <ImageView
@@ -95,11 +95,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosanscjkkr_bold"
             android:shadowColor="@color/shadowColor"
-            android:shadowDx="0.0"
-            android:shadowDy="4.0"
-            android:shadowRadius="3.0"
             android:text="@string/using_time"
-            android:textColor="@color/white"
+            android:textColor="@color/black_text"
             android:textSize="10sp" />
 
         <LinearLayout
@@ -119,7 +116,7 @@
                 android:shadowDy="4.0"
                 android:shadowRadius="3.0"
                 android:text="12"
-                android:textColor="@color/white"
+                android:textColor="@color/black_text"
                 android:textSize="14sp" />
 
             <TextView
@@ -133,7 +130,7 @@
                 android:shadowDy="4.0"
                 android:shadowRadius="3.0"
                 android:text="시간"
-                android:textColor="@color/white"
+                android:textColor="@color/black_text"
                 android:textSize="10sp" />
 
             <TextView
@@ -147,7 +144,7 @@
                 android:shadowDy="4.0"
                 android:shadowRadius="3.0"
                 android:text="20"
-                android:textColor="@color/white"
+                android:textColor="@color/black_text"
                 android:textSize="14sp" />
 
             <TextView
@@ -161,7 +158,7 @@
                 android:shadowDy="4.0"
                 android:shadowRadius="3.0"
                 android:text="@string/minute"
-                android:textColor="@color/white"
+                android:textColor="@color/black_text"
                 android:textSize="10sp" />
 
             <ImageView

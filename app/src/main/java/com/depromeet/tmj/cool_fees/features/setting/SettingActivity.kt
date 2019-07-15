@@ -42,6 +42,12 @@ class SettingActivity : BaseActivity(), SettingView {
 
     override fun goToMainActivity() {
         startActivity(MainActivity.getCallingIntent(this))
+        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left)
+    }
+
+    override fun finishActivity() {
+        finish()
+        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left)
     }
 
     private fun bindPresenter() {

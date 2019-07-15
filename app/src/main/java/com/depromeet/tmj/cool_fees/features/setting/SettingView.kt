@@ -7,7 +7,7 @@ interface SettingView : BaseView {
 
     fun checkStandType()
 
-    fun finish()
+    fun finishActivity()
 
     fun setWatt(watt: Int)
 

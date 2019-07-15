@@ -36,8 +36,10 @@
         android:id="@+id/tv_hour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanscjkkr_regular"
         android:text="시간"
         android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/np_hour"
         app:layout_constraintEnd_toStartOf="@id/np_minute"
         app:layout_constraintStart_toEndOf="@id/np_hour"
@@ -48,8 +50,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="62dp"
+        android:descendantFocusability="blocksDescendants"
         app:layout_constraintBottom_toBottomOf="@id/np_hour"
-        app:layout_constraintEnd_toStartOf="@id/tv_minute"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv_hour"
         app:layout_constraintTop_toTopOf="@id/np_hour" />
 
@@ -57,11 +60,11 @@
         android:id="@+id/tv_minute"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="62dp"
+        android:fontFamily="@font/notosanscjkkr_regular"
         android:text="@string/minute"
         android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/np_hour"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/np_minute"
         app:layout_constraintTop_toTopOf="@id/np_hour" />
 

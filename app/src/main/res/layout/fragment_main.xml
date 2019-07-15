@@ -182,6 +182,20 @@
         app:layout_constraintTop_toTopOf="@id/tv_using_time" />
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:alpha="0.3"
+        android:fontFamily="@font/notosanscjkkr_medium"
+        android:text="@string/tv_warning"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@id/view_divider"
+        app:layout_constraintStart_toStartOf="@id/view_divider"
+        app:layout_constraintTop_toBottomOf="@id/tv_using_time" />
+
+    <TextView
         android:id="@+id/tv_go_calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

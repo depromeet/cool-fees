@@ -22,11 +22,11 @@ class SettingPresenter(private val view: SettingView) : BasePresenter() {
     fun onClickConfirm(type: String, watt: Int) {
         setAirType(type)
         setWatt(watt)
-        if(isFirstLaunch()) {
+        if (isFirstLaunch()) {
             setFirstLaunchDisable()
             view.goToMainActivity()
         } else {
-            view.finish()
+            view.finishActivity()
         }
     }
 

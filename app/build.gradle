@@ -21,6 +21,18 @@ android {
         }
     }
 
+    signingConfigs {
+        debug {
+            storeFile file("keystore/debug.keystore")
+        }
+        release {
+            storeFile file("keystore/release.keystore")
+            storePassword "depromeet2019"
+            keyAlias "depromeet"
+            keyPassword "depromeet2019"
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -44,6 +56,9 @@ dependencies {
 
     // Admob
     implementation 'com.google.android.gms:play-services-ads:17.2.0'
+
+    // Lottie
+    implementation 'com.airbnb.android:lottie:3.0.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'

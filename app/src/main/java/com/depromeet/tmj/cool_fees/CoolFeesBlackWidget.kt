@@ -15,7 +15,7 @@ import java.util.*
 /**
  * Implementation of App Widget functionality.
  */
-class CoolFeesWidget : AppWidgetProvider() {
+class CoolFeesBlackWidget : AppWidgetProvider() {
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         // There may be multiple widgets active, so update all of them
@@ -35,20 +35,20 @@ class CoolFeesWidget : AppWidgetProvider() {
     companion object {
 
         internal fun updateAppWidget(
-                context: Context, appWidgetManager: AppWidgetManager,
-                appWidgetId: Int
+            context: Context, appWidgetManager: AppWidgetManager,
+            appWidgetId: Int
         ) {
-            val views = RemoteViews(context.packageName, R.layout.widget)
+            val views = RemoteViews(context.packageName, R.layout.cool_fees_black_widget)
             views.setTextViewText(R.id.tv_live_fee,
-                    String.format(context.getString(R.string.format_monthly_fee),
-                            Calendar.getInstance().get(Calendar.MONTH) + 1))
+                String.format(context.getString(R.string.format_monthly_fee),
+                    Calendar.getInstance().get(Calendar.MONTH) + 1))
 
             val totalUsageTime = getMonthlyUsageTime(Calendar.getInstance())
             views.setTextViewText(R.id.tv_total_hours, (totalUsageTime / 60).toString())
             views.setTextViewText(R.id.tv_total_minutes, (totalUsageTime % 60).toString())
 
             views.setTextViewText(R.id.tv_fee, DecimalFormat("#,###")
-                    .format(calculateFee(Calendar.getInstance(), getElectronicUsage(totalUsageTime))))
+                .format(calculateFee(Calendar.getInstance(), getElectronicUsage(totalUsageTime))))
 
             appWidgetManager.updateAppWidget(appWidgetId, views)
         }
@@ -69,7 +69,7 @@ class CoolFeesWidget : AppWidgetProvider() {
                 set(Calendar.DAY_OF_MONTH, inputCalendar.getActualMaximum(Calendar.DAY_OF_MONTH))
             }
             val usageList = Realm.getDefaultInstance().where(Usage::class.java)
-                    .between("time", firstCalendar.timeInMillis, lastCalendar.timeInMillis).findAll()
+                .between("time", firstCalendar.timeInMillis, lastCalendar.timeInMillis).findAll()
             if (usageList.isNotEmpty()) {
                 for (usage in usageList) {
                     totalTime += usage.usingTime

@@ -11,6 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <receiver android:name=".CoolFeesBlackWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/cool_fees_black_widget_info" />
+        </receiver>
         <receiver android:name=".CoolFeesWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -36,8 +45,8 @@
         </activity>
 
         <meta-data
-                android:name="com.google.android.gms.ads.APPLICATION_ID"
-                android:value="@string/admob_app_id" />
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/admob_app_id" />
     </application>
 
 </manifest>
