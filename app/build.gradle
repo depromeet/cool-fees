@@ -28,7 +28,7 @@ android {
             storeFile file("keystore/debug.keystore")
         }
         release {
-            storeFile file("keystore/release.keystore")
+            storeFile file("keystore/cool-fees-release-key")
             storePassword "depromeet2019"
             keyAlias "depromeet"
             keyPassword "depromeet2019"
