@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1029101232840",
+    "firebase_url": "https://cool-fees.firebaseio.com",
+    "project_id": "cool-fees",
+    "storage_bucket": "cool-fees.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029101232840:android:3b9359afecdd79a3",
+        "android_client_info": {
+          "package_name": "com.depromeet.tmj.cool_fees"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029101232840-tgq4kravts2354ec19iv04sjqaaeh7b3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.depromeet.tmj.cool_fees",
+            "certificate_hash": "5ec1485b81f7e58413b9967f8b587541c88269fd"
+          }
+        },
+        {
+          "client_id": "1029101232840-tfsqhp23r7ebqq74ji67g70kafvoldqh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBz6kC51b0pUTWQju358IKRC_sASw_kStU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1029101232840-tfsqhp23r7ebqq74ji67g70kafvoldqh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
